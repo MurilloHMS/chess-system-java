@@ -2,24 +2,22 @@ package chess;
 
 import boardgame.Position;
 
-import chess.ChessException;
-
 public class ChessPosition{
 
     private char column;
     private int row;
     
-    public ChessPosition(char column, int row){
-        if (column < 'a' || column > 'h' || row < 1 || row > 8) {
+    public ChessPosition(char i, int row){
+        if (i < 'a' || i > 'h' || row < 1 || row > 8) {
             throw new ChessException("Error instantiating ChessPosition. Valid v alues are from a1 to h8.");
         }; 
-        this.column = column;
+        this.column = i;
         this.row = row;     
   }
-    public getRow(int row){
+    public int getRow(int row){
         return row;
   }
-    public getColumn(char column){
+    public char getColumn(char column){
         return column;
   }
 
@@ -27,8 +25,8 @@ public class ChessPosition{
         return new Position(8 - row, column - 'a');
   }
 
-    protected static ChessPosition fromPosition(Position Position){
-        return new ChessPosition((char)'a' - position.getColumn(), 8 - postition.getRow());
+    protected static ChessPosition fromPosition(Position position){
+        return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
   }
     @Override
     public String toString(){
